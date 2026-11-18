@@ -1,0 +1,80 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Drip Store - E-commerce API",
+    "version": "1.0.0",
+    "description": "API RESTful desenvolvida para o projeto final do curso Geração Tech 4.0 (IEL Ceará / Digital College)."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Servidor Local"
+    }
+  ],
+  "paths": {
+    "/v1/auth": {
+      "post": {
+        "summary": "Realiza o login do usuário",
+        "tags": ["Autenticação"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": { "type": "string", "example": "jefferson@email.com" },
+                  "password": { "type": "string", "example": "123@123" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Login realizado com sucesso e token gerado." },
+          "401": { "description": "Credenciais inválidas." }
+        }
+      }
+    },
+    "/v1/user": {
+      "post": {
+        "summary": "Cadastra um novo usuário",
+        "tags": ["Usuários"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstname": { "type": "string", "example": "Jefferson" },
+                  "surname": { "type": "string", "example": "Silva" },
+                  "email": { "type": "string", "example": "jefferson@email.com" },
+                  "password": { "type": "string", "example": "123@123" },
+                  "confirmPassword": { "type": "string", "example": "123@123" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Usuário criado com sucesso." }
+        }
+      }
+    },
+    "/v1/product/search": {
+      "get": {
+        "summary": "Lista e busca produtos com filtros e paginação",
+        "tags": ["Produtos"],
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer" } },
+          { "name": "page", "in": "query", "schema": { "type": "integer" } },
+          { "name": "match", "in": "query", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Lista de produtos retornada com sucesso." }
+        }
+      }
+    }
+  }
+}

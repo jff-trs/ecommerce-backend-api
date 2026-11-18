@@ -74,6 +74,10 @@ O projeto segue o padrão de arquitetura **MVC (Model-View-Controller)**, garant
 | `GET` | `/v1/product/:id` | Busca produto completo por ID (incluindo imagens, opções e categorias) | Pública |
 | `POST` | `/v1/product` | Cadastra produto com relações estruturadas | 🔒 Protegida (JWT) |
 
+## 📚 Documentação da API
+A documentação interativa da API (Swagger) pode ser acessada localmente após iniciar o servidor através da rota:
+👉 `http://localhost:3000/api-docs`
+
 ---
 
 ## 🏫 Sobre a Formação
